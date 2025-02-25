@@ -16,8 +16,10 @@ services:
       - key: DB_PASSWORD
         sync: false
       - key: DB_CONNECTION_STRING
-        value: postgres://kkmk_db:${DB_PASSWORD}@dpg-cuq5r8ggph6c73cuq6ig-a.singapore-postgres.render.com:5432/kkmk
+        value: postgres://kkmk_db:c3dv1H1UcmugVinLWsxd1J4ozszIyK3C@dpg-cuq5r8ggph6c73cuq6ig-a.singapore-postgres.render.com:5432/kkmk
       - key: FRONTEND_URL
+        value: https://kkmk-test-ncal.onrender.com
+      - key: API_URL
         value: https://kkmk-test.onrender.com
 
   # Frontend service
@@ -29,4 +31,6 @@ services:
     startCommand: npx serve -s dist
     envVars:
       - key: VITE_API_URL
+        value: https://kkmk-test.onrender.com
+      - key: VITE_FRONTEND_URL
         value: https://kkmk-test-ncal.onrender.com

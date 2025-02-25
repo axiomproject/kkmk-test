@@ -4,7 +4,7 @@ const path = require('path');
 
 // Add CORS configuration
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Add your frontend URL
+  origin: process.env.FRONTEND_URL, // Add your frontend URL
   credentials: true
 }));
 

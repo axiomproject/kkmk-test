@@ -43,7 +43,7 @@ db.connect()
 
 // Update CORS configuration to allow credentials
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Use environment variable for frontend URL
+  origin: process.env.FRONTEND_URL, // Use environment variable for frontend URL
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
