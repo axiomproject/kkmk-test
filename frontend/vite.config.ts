@@ -27,7 +27,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   build: {
     outDir: 'dist',
     sourcemap: mode === 'development',
-    // Add TypeScript configuration to ignore build errors
+    // Ignore TypeScript errors during build
     typescript: {
       ignoreBuildErrors: true
     },
