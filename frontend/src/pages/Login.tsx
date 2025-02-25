@@ -9,6 +9,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import LoginFaceVerification from '../components/LoginFaceVerification';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+axios.defaults.baseURL = API_URL;
+
 const Login: React.FC = () => {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +56,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5175/api/admin/auth/verify-mpin', {
+      const response = await axios.post('/api/admin/auth/verify-mpin', {
         mpin,
         token: tempAuthData?.token
       });
@@ -77,13 +80,12 @@ const Login: React.FC = () => {
     
     try {
       let response;
-      const baseUrl = 'http://localhost:5175';
       
       if (identifier.includes('@kkmk.com')) {
         if (identifier.startsWith('staff.')) {
           // Staff login remains unchanged
           console.log('Attempting staff login...');
-          response = await axios.post(`${baseUrl}/api/staff/auth/login`, {
+          response = await axios.post('/api/staff/auth/login', {
             email: identifier,
             password
           });
@@ -94,7 +96,7 @@ const Login: React.FC = () => {
           }
         } else {
           // Admin login with MPIN check
-          response = await axios.post(`${baseUrl}/api/admin/auth/login`, {
+          response = await axios.post('/api/admin/auth/login', {
             email: identifier,
             password
           });
@@ -114,7 +116,7 @@ const Login: React.FC = () => {
         }
       } else {
         // Regular user login remains unchanged
-        response = await axios.post(`${baseUrl}/api/login`, {
+        response = await axios.post('/api/login', {
           email: identifier,
           password
         });
@@ -149,13 +151,12 @@ const Login: React.FC = () => {
   };
 
   const handleFaceLogin = async (faceData: string) => {
-    const baseUrl = 'http://localhost:5175';
     try {
       setError('');
       setInactiveAccount(false);
       console.log('Attempting face login...');
       
-      const response = await axios.post(`${baseUrl}/api/login/face`, { 
+      const response = await axios.post('/api/login/face', { 
         faceData,
         attemptNumber: faceLoginAttempts + 1
       });

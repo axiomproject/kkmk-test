@@ -24,7 +24,7 @@ const contentRoutes = require('./routes/contentRoutes'); // Import content route
 const userRoutes = require('./routes/userRoutes'); // Import user routes
 
 const app = express();
-const port = 5175; // Changed port to avoid conflicts
+const port = process.env.PORT || 5175; // Use environment variable for port
 
 const forumUploadsDir = path.join(__dirname, 'uploads', 'forum');
 if (!fs.existsSync(forumUploadsDir)) {
@@ -43,7 +43,7 @@ db.connect()
 
 // Update CORS configuration to allow credentials
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Use environment variable for frontend URL
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
