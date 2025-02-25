@@ -167,6 +167,11 @@ app.use('/api/events', eventRoutes);  // Add this line to register event routes
 app.use('/api', userRoutes);  // Add this line before authRoutes
 app.use('/api', authRoutes);
 
+// Add a simple route for the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the KKMK API');
+});
+
 // Add debug middleware for API requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`, {
