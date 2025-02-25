@@ -26,9 +26,11 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.8",
     "framer-motion": "^11.18.1",
+    "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.8",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^5.0.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
     "react-transition-group": "^4.4.5"

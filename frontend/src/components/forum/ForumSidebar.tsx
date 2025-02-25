@@ -52,7 +52,6 @@ const ForumSidebar: React.FC<ForumSidebarProps> = ({
           {mainCategories.map((category) => (
             <ListItem
               key={category}
-              button
               className={`forum-sidebar-item ${category.toLowerCase() === activeCategory ? 'active' : ''}`}
               onClick={() => handleCategoryClick(category)}
             >
