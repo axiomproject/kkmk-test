@@ -3,9 +3,9 @@ const router = express.Router();
 const { adminLogin } = require('../controllers/adminAuthController');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');  // Changed from bcrypt to bcryptjs
 
-// Explicitly handle the login path
+// Explicitly handle the login pathv
 router.post('/login', (req, res, next) => {
   console.log('Admin login attempt:', req.body);
   adminLogin(req, res, next);
