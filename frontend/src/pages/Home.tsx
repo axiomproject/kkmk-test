@@ -31,7 +31,7 @@ import "../styles/FundraiserSection.css"
 import "../styles/PageCon.css"
 import "../styles/MainButton.css"
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+const API_URL = import.meta.env.VITE_API_URL;
 axios.defaults.baseURL = API_URL;
 
 interface Fundraiser {
