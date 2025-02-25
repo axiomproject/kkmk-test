@@ -3,7 +3,7 @@ import axios from 'axios';
 import lifeImage from "../img/life.png";
 import "../styles/Life.css";
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+axios.defaults.baseURL = 'https://kkmk-test-ncal.onrender.com';
 
 interface GalleryImage {
   src: string;
@@ -48,7 +48,7 @@ const Life: React.FC = () => {
     if (!path) return '';
     if (path.startsWith('data:') || path.startsWith('http')) return path;
     if (path.startsWith('/uploads')) {
-      return `${API_URL}${path}`;
+      return `http://localhost:5175${path}`;
     }
     return path;
   };
