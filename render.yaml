@@ -1,0 +1,41 @@
+services:
+  # Backend API service
+  - type: web
+    name: kkmk-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install --legacy-peer-deps
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          name: kkmk-backend
+          type: web
+          property: port
+      - key: JWT_SECRET
+        sync: false
+      - key: DB_USER
+        value: kkmk_db
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        value: dpg-cuq5r8ggph6c73cuq6ig-a.singapore-postgres.render.com
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: kkmk
+      - key: FRONTEND_URL
+        value: https://kkmk-frontend.onrender.com
+
+  # Frontend service
+  - type: web
+    name: kkmk-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install --legacy-peer-deps && npm run build
+    startCommand: npx serve -s dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://kkmk-backend.onrender.com
