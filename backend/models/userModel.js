@@ -1,13 +1,10 @@
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+require('dotenv').config(); // Ensure environment variables are loaded
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'kkmk',
-  password: 'test',
-  port: 5432,
+  connectionString: process.env.DB_CONNECTION_STRING,
 });
 
 const createUser = async (name, username, email, password, dateOfBirth, role = 'volunteer', faceData = null) => {
