@@ -31,6 +31,8 @@ import "../styles/FundraiserSection.css"
 import "../styles/PageCon.css"
 import "../styles/MainButton.css"
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+axios.defaults.baseURL = API_URL;
 
 interface Fundraiser {
   id: number;
@@ -106,9 +108,8 @@ const FundraiserSection: React.FC = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await fetch('http://localhost:5175/api/scholars');
-        const data = await response.json();
-        setStudents(data);
+        const response = await axios.get('/api/scholars');
+        setStudents(response.data);
       } catch (error) {
         console.error('Error fetching students:', error);
       }
@@ -364,7 +365,7 @@ const Home: React.FC = () => {
     if (!path) return '';
     if (path.startsWith('data:') || path.startsWith('http')) return path;
     if (path.startsWith('/uploads')) {
-      return `http://localhost:5175${path}`;
+      return `${API_URL}${path}`;
     }
     return path;
   };
