@@ -6,3 +6,9 @@ npm install --save-dev @types/leaflet @types/react-leaflet @types/react-toastify
 
 # For chart.js
 npm install chart.js
+
+# For handling profanity
+npm install bad-words
+
+# Add dev dependencies for TypeScript development
+npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
