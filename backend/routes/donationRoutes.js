@@ -4,6 +4,8 @@ const path = require('path');
 const router = express.Router();
 const db = require('../config/db'); // Change from pool to db
 
+const API_URL = process.env.API_URL || 'http://localhost:5175';
+
 // Configure multer for file upload
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -34,7 +36,7 @@ router.get('/', async (req, res) => {
     const donationsWithUrls = donations.map(donation => ({
       ...donation,
       proof_of_payment: donation.proof_of_payment 
-        ? `http://localhost:5175/uploads/donations/${donation.proof_of_payment}`
+        ? `${API_URL}/uploads/donations/${donation.proof_of_payment}`
         : null
     }));
 
@@ -98,7 +100,7 @@ router.post('/', upload.single('proofOfPayment'), async (req, res) => {
     
     const responseData = {
       ...result,
-      proof_of_payment: proofOfPayment ? `http://localhost:5175/uploads/donations/${proofOfPayment}` : null
+      proof_of_payment: proofOfPayment ? `${API_URL}/uploads/donations/${proofOfPayment}` : null
     };
 
     console.log('Response with proof:', responseData);
