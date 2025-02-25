@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import api from '../config/api.ts'; // Use the configured Axios instance
 import { useNavigate, Link } from 'react-router-dom';
 import { PATHS } from '../routes/paths';
 import { LoginResponse } from '../types/auth';
@@ -8,9 +8,6 @@ import kkmkLogo from '../img/kmlogo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import LoginFaceVerification from '../components/LoginFaceVerification';
-
-const API_URL = import.meta.env.VITE_API_URL;
-axios.defaults.baseURL = 'https://kkmk-test-ncal.onrender.com';
 
 const Login: React.FC = () => {
   const [identifier, setIdentifier] = useState('');
@@ -56,7 +53,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('/api/admin/auth/verify-mpin', {
+      const response = await api.post('/api/admin/auth/verify-mpin', {
         mpin,
         token: tempAuthData?.token
       });
@@ -85,7 +82,7 @@ const Login: React.FC = () => {
         if (identifier.startsWith('staff.')) {
           // Staff login remains unchanged
           console.log('Attempting staff login...');
-          response = await axios.post('/api/staff/auth/login', {
+          response = await api.post('/api/staff/auth/login', {
             email: identifier,
             password
           });
@@ -96,7 +93,7 @@ const Login: React.FC = () => {
           }
         } else {
           // Admin login with MPIN check
-          response = await axios.post('/api/admin/auth/login', {
+          response = await api.post('/api/admin/auth/login', {
             email: identifier,
             password
           });
@@ -116,7 +113,7 @@ const Login: React.FC = () => {
         }
       } else {
         // Regular user login remains unchanged
-        response = await axios.post('/api/login', {
+        response = await api.post('/api/login', {
           email: identifier,
           password
         });
@@ -156,7 +153,7 @@ const Login: React.FC = () => {
       setInactiveAccount(false);
       console.log('Attempting face login...');
       
-      const response = await axios.post('/api/login/face', { 
+      const response = await api.post('/api/login/face', { 
         faceData,
         attemptNumber: faceLoginAttempts + 1
       });
