@@ -6,6 +6,8 @@ import '../routes/paths'
 import PATHS from '../routes/paths';
 import { formatDate } from '../utils/dateUtils';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+
 interface StudentDetails {
   id: number;
   first_name: string;
@@ -204,7 +206,7 @@ const StudentProfile: React.FC = () => {
                 onClick={() => handleCardClick(student.id)}
               >
                 <img
-                  src={`http://localhost:5175${student.image_url}`}
+                  src={`${API_URL}${student.image_url}`}
                   alt={`${student.first_name} ${student.last_name}`}
                   className="student-profile-image"
                 />
