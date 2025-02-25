@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://kkmk-test-ncal.onrender.com/';
+const apiUrl = 'https://kkmk-test-ncal.onrender.com';
 
 const api = axios.create({
   baseURL: apiUrl,
