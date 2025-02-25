@@ -3,12 +3,10 @@ import { Post, Comment } from '../../types/forum';
 import { 
   Card, CardContent, Typography, Avatar, Button, Chip, 
   TextField, Collapse, IconButton, InputAdornment,
-  Dialog, DialogTitle, DialogContent, DialogActions,
-  FormControl, InputLabel, Select, Modal, Box, Snackbar, Alert // Add Modal, Box, Snackbar, and Alert imports
+  Modal, Box, Snackbar, Alert // Add Modal, Box, Snackbar, and Alert imports
 } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import SendIcon from '@mui/icons-material/Send';
