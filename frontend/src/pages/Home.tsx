@@ -141,7 +141,7 @@ const FundraiserSection: React.FC = () => {
           {/* Main (large) card */}
           <div className="fundraiser-main-card" onClick={() => handleCardClick(mainCard.id)}>
             <img
-              src={`http://localhost:5175${mainCard.image_url}`}
+              src={`${API_URL}${mainCard.image_url}`}
               alt={`${mainCard.first_name} ${mainCard.last_name}`}
               className="fundraiser-main-image"
             />
@@ -165,7 +165,7 @@ const FundraiserSection: React.FC = () => {
                 onClick={() => handleCardClick(student.id)}
               >
                 <img
-                  src={`http://localhost:5175${student.image_url}`}
+                  src={`${API_URL}${student.image_url}`}
                   alt={`${student.first_name} ${student.last_name}`}
                   className="fundraiser-side-image"
                 />
@@ -569,3 +569,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
