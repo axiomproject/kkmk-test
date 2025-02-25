@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import LoginFaceVerification from '../components/LoginFaceVerification';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175';
+const API_URL = import.meta.env.VITE_API_URL;
 axios.defaults.baseURL = 'https://kkmk-test-ncal.onrender.com';
 
 const Login: React.FC = () => {
