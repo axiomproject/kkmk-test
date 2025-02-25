@@ -15,14 +15,16 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     host: true,
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL,
+        target: process.env.VITE_API_URL || 'http://localhost:5175',
         changeOrigin: true,
         secure: false
       }
     }
   },
   define: {
-    'process.env': {}
+    // Expose env variables to the client
+    'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL),
+    'process.env.VITE_FRONTEND_URL': JSON.stringify(process.env.VITE_FRONTEND_URL)
   },
   build: {
     outDir: 'dist',
