@@ -11,4 +11,4 @@ npm install chart.js
 npm install bad-words
 
 # Add dev dependencies for TypeScript development
-npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser @types/node

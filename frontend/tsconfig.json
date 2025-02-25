@@ -32,6 +32,10 @@
     "typeRoots": [
       "./node_modules/@types",
       "./src/types"
+    ],
+    "types": [
+      "node",
+      // ...other types...
     ]
   },
   "include": ["src", "src/types"],
